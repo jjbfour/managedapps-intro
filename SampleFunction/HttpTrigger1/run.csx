@@ -25,6 +25,7 @@ public class User
 {
     public string FullName {get; set;}
     public string Location {get; set;}
+    public string ReadOnlyField {get; set;}
 }
 
 private static string separator = ":::";
@@ -61,6 +62,7 @@ public static HttpResponseMessage Run(HttpRequestMessage req, string subscriptio
             inputObject.id = id;
             inputObject.name = name;
             inputObject.type = "Microsoft.CustomProviders/resourceproviders/users";
+            inputObject.properties.ReadOnlyField = "my cool value";
 
             if(userInfo.TryGetValue(id, out UserResource tempUser))
             {
